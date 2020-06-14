@@ -3,6 +3,7 @@ import axios from "axios";
 //MUI stuff
 import Grid from "@material-ui/core/Grid";
 import Todo from "../components/Todo";
+import Profile from "../components/Profile";
 
 class Home extends Component {
     state = {
@@ -28,10 +29,7 @@ class Home extends Component {
                         })}
                 </Grid>
                 <Grid item sm={4} xs={12}>
-                    {this.state.todos &&
-                        this.state.todos.map((item) => {
-                            return <p key={item.todoId}>{item.user}</p>;
-                        })}
+                    {this.state.todos && <Profile key={this.state.todos.todoId}>{this.state.todos.user}</Profile>}
                 </Grid>
             </Grid>
         );
