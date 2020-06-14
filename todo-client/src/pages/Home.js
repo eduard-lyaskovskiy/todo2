@@ -24,7 +24,7 @@ class Home extends Component {
                 <Grid item sm={8} xs={12}>
                     {this.state.todos &&
                         this.state.todos.map((todo) => {
-                            return <Todo todo={todo}></Todo>;
+                            return <Todo key={todo.todoId} todo={todo}></Todo>;
                         })}
                 </Grid>
                 <Grid item sm={4} xs={12}>

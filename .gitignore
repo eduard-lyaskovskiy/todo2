@@ -43,3 +43,4 @@ todo-client/.env.production.local
 todo-client/npm-debug.log*
 todo-client/yarn-debug.log*
 todo-client/yarn-error.log*
+.gitignore

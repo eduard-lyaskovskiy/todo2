@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../src/App.css";
+//dayjs
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 //MUI stuff
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -9,7 +11,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { Typography } from "@material-ui/core";
 
-const styles = (theme) => ({
+const styles = {
     card: {
         display: "flex",
         marginBottom: 20,
@@ -21,10 +23,11 @@ const styles = (theme) => ({
         padding: 25,
         objectFit: "cover",
     },
-});
+};
 
 class Todo extends Component {
     render() {
+        dayjs.extend(relativeTime);
         const {
             classes,
             todo: { title, createdAt, userImage, user, todoId, commentCount },
@@ -37,7 +40,7 @@ class Todo extends Component {
                         {user}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
-                        {createdAt}
+                        {dayjs(createdAt).fromNow()}
                     </Typography>
                     <Typography variant="body1">{title}</Typography>
                 </CardContent>
