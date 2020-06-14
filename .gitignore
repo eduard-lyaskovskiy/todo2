@@ -1,0 +1,45 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+todo-functions/node_modules
+todo-functions/.pnp
+todo-functions/.pnp.js
+# testing
+todo-functions/coverage
+
+# production
+todo-functions/build
+todo-functions/key
+
+# misc
+todo-functions/.DS_Store
+todo-functions/.env.local
+todo-functions/.env.development.local
+todo-functions/.env.test.local
+todo-functions/.env.production.local
+
+todo-client/npm-debug.log*
+todo-client/yarn-debug.log*
+todo-client/yarn-error.log*
+
+
+# dependencies
+todo-client/node_modules
+todo-client/.pnp
+todo-client/.pnp.js
+# testing
+todo-client/coverage
+
+# production
+todo-client/build
+
+# misc
+todo-client/.DS_Store
+todo-client/.env.local
+todo-client/.env.development.local
+todo-client/.env.test.local
+todo-client/.env.production.local
+
+todo-client/npm-debug.log*
+todo-client/yarn-debug.log*
+todo-client/yarn-error.log*
