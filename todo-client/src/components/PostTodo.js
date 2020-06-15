@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import MyButton from "../util/MyButton";
 //MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
@@ -13,21 +14,22 @@ import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 //Redux stuff
 import { connect } from "react-redux";
-import { postTodo } from "../redux/actions/dataActions";
-import MyButton from "../util/MyButton";
+import { postTodo, clearErrors } from "../redux/actions/dataActions";
 
 const styles = (theme) => ({
     ...theme.spreadThis,
     submitButton: {
         position: "relative",
+        float: "right",
+        marginTop: "10px",
     },
     progressSpiner: {
         position: "absolute",
     },
     closeButton: {
         position: "absolute",
-        left: "90%",
-        top: "10%",
+        left: "92%",
+        top: "0%",
     },
 });
 class PostTodo extends Component {
@@ -52,6 +54,7 @@ class PostTodo extends Component {
         });
     };
     hadleClose = () => {
+        this.props.clearErrors();
         this.setState({
             open: false,
             errors: {},
@@ -110,10 +113,11 @@ class PostTodo extends Component {
 }
 PostTodo.propTypes = {
     postTodo: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     UI: state.UI,
 });
-export default connect(mapStateToProps, { postTodo })(withStyles(styles)(PostTodo));
+export default connect(mapStateToProps, { postTodo, clearErrors })(withStyles(styles)(PostTodo));

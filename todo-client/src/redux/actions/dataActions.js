@@ -1,4 +1,4 @@
-import { SET_TODOS, LOADING_DATA, DONE_TODO, LOADING_UI, CLEAR_ERRORS, POST_TODO, SET_ERRORS } from "../types";
+import { SET_TODOS, LOADING_DATA, DONE_TODO, LOADING_UI, CLEAR_ERRORS, POST_TODO, SET_ERRORS, SET_TODO, STOP_LOADING_UI } from "../types";
 import axios from "axios";
 
 export const getTodos = () => (dispatch) => {
@@ -17,6 +17,21 @@ export const getTodos = () => (dispatch) => {
                 payload: null,
             });
         });
+};
+export const getTodo = (todoId) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios
+        .get(`/todo/${todoId}`)
+        .then((res) => {
+            dispatch({
+                type: SET_TODO,
+                payload: res.data,
+            });
+            dispatch({
+                type: STOP_LOADING_UI,
+            });
+        })
+        .catch((err) => console.log(err));
 };
 
 export const doneTodo = (todoId) => (dispatch) => {
@@ -47,4 +62,8 @@ export const postTodo = (newTodo) => (dispatch) => {
                 payload: err.response.data,
             })
         );
+};
+
+export const clearErrors = () => (dispatch) => {
+    dispatch({ type: CLEAR_ERRORS });
 };

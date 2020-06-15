@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
 import DoneTodo from "./DoneTodo";
+import TodoDialog from "./TodoDialog";
+
 //dayjs
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -62,6 +64,7 @@ class Todo extends Component {
                         <ChatIcon color="primary"></ChatIcon>
                     </MyButton>
                     <span>{commentCount} comments</span>
+                    <TodoDialog todoId={todoId} userUser={userUser}></TodoDialog>
                 </CardContent>
             </Card>
         );

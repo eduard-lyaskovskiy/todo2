@@ -1,4 +1,4 @@
-import { SET_TODOS, LOADING_DATA, DONE_TODO, POST_TODO } from "../types";
+import { SET_TODOS, LOADING_DATA, DONE_TODO, POST_TODO, SET_TODO } from "../types";
 
 const initalState = {
     todos: [],
@@ -18,6 +18,11 @@ export default function (state = initalState, action) {
                 ...state,
                 todos: action.payload,
                 loading: false,
+            };
+        case SET_TODO:
+            return {
+                ...state,
+                todo: action.payload,
             };
         case DONE_TODO:
             let index = state.todos.findIndex((todo) => todo.todoId === action.payload);

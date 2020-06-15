@@ -4,7 +4,7 @@ import "./App.css";
 // Redux
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { SET_AUTHENTICATED } from "./redux/types";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "./redux/types";
 import { logoutUser, getUserData } from "./redux/actions/userActions";
 //AXIOS
 import axios from "axios";
@@ -28,8 +28,10 @@ const theme = createMuiTheme(themeFile);
 const token = localStorage.FBIdToken;
 if (token) {
     const decodedToken = jwtDecode(token);
-    if (decodedToken.exp * 10000000000 < Date.now()) {
+    if (decodedToken.exp * 10000 < Date.now()) {
         store.dispatch(logoutUser());
+        store.dispatch({ type: SET_UNAUTHENTICATED });
+        axios.defaults.headers.common["Authorization"] = "";
         window.location.assign("/login");
     } else {
         store.dispatch({ type: SET_AUTHENTICATED });
