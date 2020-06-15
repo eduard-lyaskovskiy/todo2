@@ -1,4 +1,4 @@
-import { SET_TODOS, LOADING_DATA, DONE_TODO } from "../types";
+import { SET_TODOS, LOADING_DATA, DONE_TODO, POST_TODO } from "../types";
 
 const initalState = {
     todos: [],
@@ -24,6 +24,11 @@ export default function (state = initalState, action) {
             state.todos.splice(index, 1);
             return {
                 ...state,
+            };
+        case POST_TODO:
+            return {
+                ...state,
+                todos: [action.payload, ...state.todos],
             };
         default:
             return state;

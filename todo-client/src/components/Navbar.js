@@ -2,13 +2,13 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import PostTodo from "./PostTodo";
 // MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import MyButton from "../util/MyButton";
 //Icons
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
 
@@ -20,9 +20,7 @@ export class Navbar extends Component {
                 <Toolbar className="nav-container">
                     {authenticated ? (
                         <Fragment>
-                            <MyButton tip="Post a new 2DO!">
-                                <AddIcon></AddIcon>
-                            </MyButton>
+                            <PostTodo />
                             <Link to="/">
                                 <MyButton tip="Home">
                                     <HomeIcon></HomeIcon>

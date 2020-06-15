@@ -24,7 +24,7 @@ exports.getAllTodos = (req, res) => {
 
 exports.addTodo = (req, res) => {
     if (req.body.title.trim() === "") {
-        return res.status(400).json({ title: "Title must not be empty" });
+        return res.status(400).json({ title: "Must not be empty" });
     }
     const newTodo = {
         title: req.body.title,
