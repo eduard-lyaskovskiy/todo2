@@ -67,11 +67,21 @@ const setAuthorezationHeader = (token) => {
 export const upLoadImage = (formData) => (dispatch) => {
     dispatch({ type: LOADING_USER });
     axios
-        .post("user/image", formData)
+        .post("/user/image", formData)
         .then((res) => {
             dispatch(getUserData());
         })
         .catch((err) => {
             console.log(err);
         });
+};
+
+export const editUserDetails = (userDetails) => (dispatch) => {
+    dispatch({ type: LOADING_USER });
+    axios
+        .post("/user", userDetails)
+        .then(() => {
+            dispatch(getUserData());
+        })
+        .catch((err) => console.log(err));
 };

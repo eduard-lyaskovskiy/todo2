@@ -11,7 +11,7 @@ exports.getAllTodos = (req, res) => {
                 todos.push({
                     todoId: doc.id,
                     title: doc.data().title,
-                    user: doc.data().user,
+                    userUser: doc.data().userUser,
                     createdAt: doc.data().createdAt,
                     commentCount: doc.data().commentCount,
                     userImage: doc.data().userImage,
@@ -28,7 +28,7 @@ exports.addTodo = (req, res) => {
     }
     const newTodo = {
         title: req.body.title,
-        user: req.user.user,
+        userUser: req.user.user,
         userImage: req.user.imageUrl,
         createdAt: new Date().toISOString(),
         commentCount: 0,
@@ -82,7 +82,7 @@ exports.commentOnTodo = (req, res) => {
         body: req.body.body,
         createdAt: new Date().toISOString(),
         todoId: req.params.todoId,
-        user: req.user.user,
+        userUser: req.user.user,
         userImage: req.user.imageUrl,
     };
 

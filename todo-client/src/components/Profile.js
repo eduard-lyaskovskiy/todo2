@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import EditDetails from "./EditDetails";
 import dayjs from "dayjs";
 //Redux stuff
 import { connect } from "react-redux";
@@ -136,6 +137,7 @@ class Profile extends Component {
                                 <MeetingRoom color="primary" />
                             </IconButton>
                         </Tooltip>
+                        <EditDetails />
                     </div>
                 </Paper>
             ) : (

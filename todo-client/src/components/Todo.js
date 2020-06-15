@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import MyButton from "../util/MyButton";
+import DoneTodo from "./DoneTodo";
 //dayjs
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -10,9 +12,14 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { Typography } from "@material-ui/core";
+//Icons
+import ChatIcon from "@material-ui/icons/Chat";
+//Redux
+import { connect } from "react-redux";
 
 const styles = {
     card: {
+        position: "relative",
         display: "flex",
         marginBottom: 20,
     },
@@ -30,19 +37,31 @@ class Todo extends Component {
         dayjs.extend(relativeTime);
         const {
             classes,
-            todo: { title, createdAt, userImage, user, todoId, commentCount },
+            todo: { title, createdAt, userImage, userUser, todoId, commentCount },
+            user: {
+                authenticated,
+                userData: {
+                    credentials: { user },
+                },
+            },
         } = this.props;
+        const deleteButton = authenticated && userUser === user ? <DoneTodo todoId={todoId} /> : null;
         return (
             <Card className={classes.card}>
                 <CardMedia image={userImage} title="Profile image" className={classes.image}></CardMedia>
                 <CardContent className="card-content" className={classes.content}>
-                    <Typography variant="h5" component={Link} to={`/users/${user}`} color="primary">
-                        {user}
+                    <Typography variant="h5" component={Link} to={`/users/${userUser}`} color="primary">
+                        {userUser}
                     </Typography>
+                    {deleteButton}
                     <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).fromNow()}
                     </Typography>
                     <Typography variant="body1">{title}</Typography>
+                    <MyButton tip="comments">
+                        <ChatIcon color="primary"></ChatIcon>
+                    </MyButton>
+                    <span>{commentCount} comments</span>
                 </CardContent>
             </Card>
         );
@@ -51,6 +70,13 @@ class Todo extends Component {
 
 Todo.propTypes = {
     classes: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
+    todo: PropTypes.object.isRequired,
 };
+const mapStateToProps = (state) => ({
+    user: state.user,
+});
 
-export default withStyles(styles)(Todo);
+// mapActionsToProps = {};
+
+export default connect(mapStateToProps)(withStyles(styles)(Todo));

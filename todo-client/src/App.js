@@ -28,7 +28,7 @@ const theme = createMuiTheme(themeFile);
 const token = localStorage.FBIdToken;
 if (token) {
     const decodedToken = jwtDecode(token);
-    if (decodedToken.exp * 10000000 < Date.now()) {
+    if (decodedToken.exp * 10000000000 < Date.now()) {
         store.dispatch(logoutUser());
         window.location.assign("/login");
     } else {

@@ -7,4 +7,8 @@ export const LOADING_USER = "LOADING_USER";
 export const SET_ERRORS = "SET_ERRORS";
 export const LOADING_UI = "LOADING_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const LOADING_DATA = "LOADING_DATA";
 // Data reducer
+export const SET_TODOS = "SET_TODOS";
+export const SET_TODO = "SET_TODO";
+export const DONE_TODO = "DONE_TODO";
