@@ -5,7 +5,7 @@ import EditDetails from "./EditDetails";
 import dayjs from "dayjs";
 //Redux stuff
 import { connect } from "react-redux";
-import { logoutUser, upLoadImage } from "../redux/actions/userActions";
+import { logoutUser, upLoadImage } from "../../redux/actions/userActions";
 //MUI stuff
 import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";

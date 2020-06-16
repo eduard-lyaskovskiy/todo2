@@ -27,8 +27,8 @@ export default {
             margin: "10px auto 10px auto",
         },
         button: {
-            // marginTop: 15,
-            // marginBottom: 10,
+            marginTop: 15,
+            marginBottom: 10,
             position: "relative",
         },
         customError: {
@@ -37,6 +37,15 @@ export default {
         },
         progress: {
             position: "absolute",
+        },
+        invisibleSeparator: {
+            border: "none",
+            margin: 4,
+        },
+        visibleSeparator: {
+            widt: "100%",
+            borderBottom: "1px solid grba(0,0,0,0.1)",
+            marginBottom: 20,
         },
     },
 };

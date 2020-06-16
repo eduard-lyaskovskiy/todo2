@@ -14,3 +14,4 @@ export const SET_TODOS = "SET_TODOS";
 export const SET_TODO = "SET_TODO";
 export const DONE_TODO = "DONE_TODO";
 export const POST_TODO = "POST_TODO";
+export const SUBMIT_COMMENT = "SUBMIT_COMMENT";

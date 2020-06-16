@@ -1,10 +1,11 @@
 const functions = require("firebase-functions");
 const app = require("express")();
 const FBAuth = require("./util/fbAuth");
+const cors = require("cors");
 const { db } = require("./util/admin");
 const { getAllTodos, addTodo, getTodo, commentOnTodo, deleteTodo } = require("./handlers/todos");
 const { signup, login, uploadImage, addUserDetails, getAuthenticatedUser, getUserFetails, markNotificationsRead } = require("./handlers/users");
-
+app.use(cors());
 // TODOS ROUTE
 app.get("/todos", getAllTodos);
 app.post("/todo", FBAuth, addTodo);

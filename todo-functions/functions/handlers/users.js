@@ -150,10 +150,8 @@ exports.getAuthenticatedUser = (req, res) => {
         .then((doc) => {
             if (doc.exists) {
                 userData.credentials = doc.data();
+                return db.collection("notifications").where("recipient", "==", req.user.user).orderBy("createdAt", "desc").limit(10).get();
             }
-        })
-        .then((data) => {
-            return db.collection("notifications").where("recipient", "==", req.user.user).orderBy("createdAt", "desc").limit(10).get();
         })
         .then((data) => {
             userData.notifications = [];
@@ -167,8 +165,8 @@ exports.getAuthenticatedUser = (req, res) => {
                     createdAt: doc.data().createdAt,
                     notificationsId: doc.id,
                 });
-                return res.json({ userData });
             });
+            return res.json({ userData });
         })
         .catch((err) => {
             console.error(err);

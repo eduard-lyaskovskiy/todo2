@@ -1,4 +1,4 @@
-import { SET_TODOS, LOADING_DATA, DONE_TODO, POST_TODO, SET_TODO } from "../types";
+import { SET_TODOS, LOADING_DATA, DONE_TODO, POST_TODO, SET_TODO, SUBMIT_COMMENT } from "../types";
 
 const initalState = {
     todos: [],
@@ -34,6 +34,14 @@ export default function (state = initalState, action) {
             return {
                 ...state,
                 todos: [action.payload, ...state.todos],
+            };
+        case SUBMIT_COMMENT:
+            return {
+                ...state,
+                todo: {
+                    ...state.todo,
+                    comments: [action.payload, ...state.todo.comments],
+                },
             };
         default:
             return state;

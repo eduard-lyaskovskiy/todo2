@@ -15,7 +15,7 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import themeFile from "./util/theme";
 //components and utils
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 import AuthRoute from "./util/AuthRoute";
 //pages
 import Home from "./pages/Home";
@@ -24,6 +24,7 @@ import Signup from "./pages/Signup";
 
 const theme = createMuiTheme(themeFile);
 
+axios.defaults.baseURL = "https://europe-west3-todos2-3506e.cloudfunctions.net/api";
 // Check Authorization
 const token = localStorage.FBIdToken;
 if (token) {

@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { getTodos } from "../redux/actions/dataActions";
 //MUI stuff
 import Grid from "@material-ui/core/Grid";
-import Todo from "../components/Todo";
-import Profile from "../components/Profile";
+import Todo from "../components/todo/Todo";
+import Profile from "../components/profile/Profile";
 
 class Home extends Component {
     componentDidMount() {

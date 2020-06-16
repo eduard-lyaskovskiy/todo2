@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import PostTodo from "./PostTodo";
+import PostTodo from "../todo/PostTodo";
 // MUI stuff
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 //Icons
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";

@@ -1,4 +1,4 @@
-import { SET_TODOS, LOADING_DATA, DONE_TODO, LOADING_UI, CLEAR_ERRORS, POST_TODO, SET_ERRORS, SET_TODO, STOP_LOADING_UI } from "../types";
+import { SET_TODOS, LOADING_DATA, DONE_TODO, LOADING_UI, CLEAR_ERRORS, POST_TODO, SET_ERRORS, SET_TODO, STOP_LOADING_UI, SUBMIT_COMMENT } from "../types";
 import axios from "axios";
 
 export const getTodos = () => (dispatch) => {
@@ -64,6 +64,23 @@ export const postTodo = (newTodo) => (dispatch) => {
         );
 };
 
+export const submitComment = (todoId, commentData) => (dispatch) => {
+    axios
+        .post(`/todo/${todoId}/comment`, commentData)
+        .then((res) => {
+            dispatch({
+                type: SUBMIT_COMMENT,
+                payload: res.data,
+            });
+            dispatch(clearErrors());
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data,
+            });
+        });
+};
 export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
 };
